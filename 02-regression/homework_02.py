@@ -2,20 +2,9 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+from utils import find_path
 
-from pathlib import Path
-
-def find_file(filename):
-    if "__file__" in globals():
-        return Path(__file__).parent.parent / filename
-    
-    path = Path.cwd()
-    while not (path / filename).exists():
-        path = path.parent
-    return path / filename
-
-
-car_fuel_efficiency_2026 = find_file("car_fuel_efficiency_2026.csv")
+car_fuel_efficiency_2026 = find_path("car_fuel_efficiency_2026.csv")
 df = pd.read_csv(car_fuel_efficiency_2026)
 
 features=[
@@ -36,9 +25,7 @@ y = df[target]
 # Q0: EDA has fuel_efficiency_mpg a long tail?
 sns.histplot(df[target], bins=50)
 # plt.show() # show chart and pause the execution (close it to resume)
-fuel_efficiency_mpg = car_fuel_efficiency_2026.parent \
-        / "02-regression" \
-        / "fuel_efficiency_mpg.png"
+fuel_efficiency_mpg = find_path("02-regression") / "fuel_efficiency_mpg.png"
 plt.savefig(fuel_efficiency_mpg)
 
 print(f"Generated plot for fuel_efficiency_mpg: {fuel_efficiency_mpg}")

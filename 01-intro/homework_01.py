@@ -1,18 +1,8 @@
 import pandas as pd
 import numpy as np
-from pathlib import Path
+from utils import find_path
 
-def find_file(filename):
-    if "__file__" in globals():
-        return Path(__file__).parent.parent / filename
-    
-    path = Path.cwd()
-    while not (path / filename).exists():
-        path = path.parent
-    return path / filename
-
-
-car_fuel_efficiency_2026 = find_file("car_fuel_efficiency_2026.csv")
+car_fuel_efficiency_2026 = find_path("car_fuel_efficiency_2026.csv")
 
 # Q1
 print("Q1 Pandas version:", pd.__version__)
