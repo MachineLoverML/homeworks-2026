@@ -26,11 +26,8 @@ Build and run the Docker container, repeat Q4's request. What's `conversion_prob
 
 ## Run
 
-```bash
-cd cohorts/2026/homework/05-deployment
-uv sync --locked
-uv run python smoke_test.py
-```
+There is a development environment already set up in git://machine-learning-zoomcamp/cohorts/2026/homework/05-deployment/
+so, both the shell and python script must be run there.
 
 ## Submit
 
